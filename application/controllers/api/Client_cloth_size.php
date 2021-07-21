@@ -201,8 +201,8 @@ class Client_cloth_size extends REST_Controller
 			], REST_Controller::HTTP_BAD_REQUEST);
 		}
 
-		$check_size_chart = $this->Size_chart_model->get_by_id($this->post('size_chart_id'));
-		$check_client = $this->Client_data_model->get_by_id($this->post('client_id'));
+		$check_size_chart = $this->Size_chart_model->get_by_id($this->put('size_chart_id'));
+		$check_client = $this->Client_data_model->get_by_id($this->put('client_id'));
 		if (!$check_client || !$check_size_chart){
 			$this->response([
 				'code' => 400,
@@ -210,7 +210,7 @@ class Client_cloth_size extends REST_Controller
 			], REST_Controller::HTTP_BAD_REQUEST);
 		}
 
-		$check_exist = $this->Client_cloth_size_model->get_by_data_exist($this->put('client_id'),$this->put('client_id'));
+		$check_exist = $this->Client_cloth_size_model->get_by_data_exist($this->put('client_id'),$this->put('size_chart_id'));
 
 
 			if ($check_exist){
